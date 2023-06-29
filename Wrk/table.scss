@@ -1,0 +1,231 @@
+/* RESET & BASIC STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --table-border: red;
+  --alternatingmobilecolour: rgba(0, 74, 51,0.1);
+  --wgr: rgb(0, 74, 51);
+  --wgr-light: rgba(0, 74, 51,0.1);
+}
+
+ 
+.resp_table {
+	margin:0 30px 100px;
+
+	.hidden {
+		display:block;
+		padding: 0 0 3px;
+  		text-transform:uppercase;
+  		color: var(--wgr);
+	}
+	.hideondesktop {
+		background-color:yellow;
+		display:none !important;
+	}
+	
+	.hideonmobile {
+		display:none  !important;
+	}
+ 
+ 	table { 
+		max-width: 1000px;
+		width:90%;
+		margin: 0px auto 100px;
+  
+  			th { text-align:left;  color: #000;  }
+  			
+  			.subheading {
+  						th { color: var(  --wgr); font-weight:normal; text-transform: uppercase; }
+ 			}
+
+			 &.single {
+					@media screen and (max-width: 649px)  {
+ 					
+					
+					
+	  						text-align: left;
+	  						border-collapse: collapse;
+		  					
+		  					tbody {
+			  					display: flex;
+			  					flex-wrap: wrap;
+			 					
+			 					tr { 
+			  					display: flex;
+									flex-wrap: wrap;
+									flex:0 0 100%;
+									
+									border-top:1px solid var(--wgr);
+									
+									&:last-child {
+										border-bottom:1px solid var(--wgr);
+									}
+									
+									&:nth-of-type(even) > * {
+										background: var( --alternatingmobilecolour);
+									}
+								
+									td {
+													width:100%;
+													padding:10px;
+													border-bottom:1px solid var(--wgr-light);
+													
+													&:last-child {
+														border-bottom:0px;
+													}
+													
+										}  
+								}
+							}
+						}
+					@media screen and (min-width: 650px)  {
+							
+							
+					
+								border-collapse: collapse; 
+					
+ 							tr {
+	  							border-bottom:1px solid var(  --wgr);;
+	  							
+	  							td,th {
+		  							padding:10px 5px ;
+	  							}
+  							}
+							.hidden { // Hide The label
+								display:none;
+							}
+							
+							.hideonmobile { // display items just hidden on mobile
+								display:table-row !important;
+							}
+							
+							.hideondesktop { // hide items for desktop
+								display:none !important;
+								
+								&.hideonmobile {  // stop hideon mobile reshowing
+									display:none !important;
+								}
+							}
+							
+							
+							
+							}
+			
+			}
+			&.double {
+				@media screen and (max-width: 560px)  {
+				 
+				
+				
+						  text-align: left;
+						  border-collapse: collapse;
+						  
+						  tbody {
+							  display: flex;
+							  flex-wrap: wrap;
+							 
+							 tr { 
+							  display: flex;
+								flex-wrap: wrap;
+								flex:0 0 100%;
+								
+								border-top:1px solid var(--wgr);
+								
+								&:last-child {
+									border-bottom:1px solid var(--wgr);
+								}
+								
+								&:nth-of-type(even) > * {
+									background: var( --alternatingmobilecolour);
+								}
+							
+								td {
+												width:100%;
+												padding:10px;
+												border-bottom:1px solid var(--wgr-light);
+												
+												&:last-child {
+													border-bottom:0px;
+												}
+												
+									}  
+							}
+						}
+					}
+				
+				@media screen and (min-width:561px) and (max-width: 699px)  {
+
+					  text-align: left;
+					  border-collapse: collapse;
+					  
+					  tbody {
+						  display: flex;
+						  flex-wrap: wrap;
+						  border:1px solid var(--wgr);
+						  
+						 
+						 tr { 
+						  display: flex;
+							flex-wrap: wrap;
+							flex:0 0 50%;
+							
+							border-bottom:1px solid var(--wgr);
+							
+							&:last-child, &:nth-last-child(2) {
+								border-bottom:0;
+							}
+							
+							
+							&:nth-of-type(even) > * {
+								background: var( --alternatingmobilecolour);
+							}
+						
+							td {
+											width:100%;
+											padding:10px;
+											border-bottom:1px solid var(--wgr-light);
+											
+											&:last-child {
+												border-bottom:0px;
+											}
+											
+								}  
+						}
+					}
+				}
+				@media screen and (min-width: 700px)  {
+						
+						
+				
+							border-collapse: collapse; 
+				
+						 tr {
+							  border-bottom:1px solid var(  --wgr);;
+							  
+							  td,th {
+								  padding:10px 5px ;
+							  }
+						  }
+						.hidden { // Hide The label
+							display:none;
+						}
+						
+						.hideonmobile { // display items just hidden on mobile
+							display:table-row !important;
+						}
+						
+						.hideondesktop { // hide items for desktop
+							display:none !important;
+							
+							&.hideonmobile {  // stop hideon mobile reshowing
+								display:none !important;
+							}
+						}
+						
+						
+						
+						}
+				
+			}
+			
+	}
+}

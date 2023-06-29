@@ -4,25 +4,20 @@ Block Name: Responsive Tables
 Block Description: Tables
 Post Types: post, page, custom-type
 Block SVG: alien-solid.svg
-Block Category: ********
+Block Category: Dave
 */
-$blockclass = 'tableblock';
+$blockclass = 'resp_table';
 /* --------------------------------------------------------------------------- */
-
-
-$className = ! empty( $block['className'] ) ? $block['className'].' ' : '';
 $anchor = '';
 
-echo '<section '.$anchor.' class="'.$blockclass .'">	
+echo '<section '.$anchor.' class="'.$blockclass .'">	';
 
 
-
-<div class="resp_table">';
 $table = '';
 if( have_rows('table_data') ):
 	$colcount = get_field('number_of_columns');
 	
-	$table = '<table id="'.get_field('table_id').'" name="'.get_field('table_id').'">';
+	$table = '<table id="'.get_field('table_id').'" name="'.get_field('table_id').'" class="'.get_field('table_class').'">';
 	$passedarea = '';
 	$titlearray = array();
 	$ac = 1;
@@ -63,7 +58,7 @@ if( have_rows('table_data') ):
 				$cell = 'th'; 
 		};
 			if ($passedarea != $tarea ) {
-			if (strlen($passedarea > 4)) {
+			if (strlen($passedarea) > 4) {
 				$row .= '</'.$passedareaend.'>';
 			};
 			$row .= '<'.$tarea.'>';
@@ -84,22 +79,22 @@ if( have_rows('table_data') ):
 			while($cc <= $colcount ) {
 				
 				$next = $cc+1;				
-				
+				$currentdatafield = get_sub_field('col_'.$cc);
 				//cell content
 			
 				
 				if ($cell === 'th') {
 					
-					if (strlen(get_sub_field('col_'.$cc) > 0)) { $currentdata = get_sub_field('col_'.$cc); } else {  $currentdata ='&nbsp;';};
+					if (strlen($currentdatafield) > 0) { $currentdata = $currentdatafield; } else {  $currentdata ='&nbsp;';};
 					
 					
 					if ($cc > 1) { // Not first Cell
 						
-						if (strlen( $currentdata > 0)) {
+						if (strlen( $currentdata) > 0) {
 								if ($next <= $colcount) {
 									
 									
-									if (strlen(get_sub_field('col_'.$next) > 0)) { 
+									if (strlen(get_sub_field('col_'.$next)) > 0) { 
 										$colspan='';
 									} else {  
 										$colspan=' colspan="2"';
@@ -130,7 +125,11 @@ if( have_rows('table_data') ):
 					
 				} else {
 					// Normal Cell
-						if (strlen(get_sub_field('col_'.$cc) > 0)) { $currentdata = get_sub_field('col_'.$cc); } else {  $currentdata ='&nbsp;';};
+						if (strlen($currentdatafield) > 0) { $currentdata = $currentdatafield; 
+							
+							
+							
+						} else {  $currentdata ='&nbsp;';};
 						$celloutput =  '<td>'.$titlearray['col_'.$cc].$currentdata.'</td>';
 					// Normal Cell
 				};
@@ -148,7 +147,7 @@ if( have_rows('table_data') ):
 			
 	endwhile;
 
-		if (strlen($tarea > 4)) {
+		if (strlen($tarea) > 4) {
 				$table .= '</'.$tarea.'>';
 			};
 		$table .= '</table>';	
@@ -159,11 +158,5 @@ echo $table.'
 
 
 
-
-
-
-</div>
-
 </section>'; 
-
 ?>

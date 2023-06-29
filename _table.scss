@@ -1,0 +1,118 @@
+/* RESET & BASIC STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --table-border: red;
+  --alternatingmobilecolour: firebrick;
+}
+
+
+.resp_table {
+
+.hidden {
+	display:block;
+	padding: 0 0 3px;
+}
+.hideondesktop {
+	background-color:yellow;
+	display:none !important;
+}
+
+.hideonmobile {
+	display:none  !important;
+}
+
+table {
+  border: 1px solid var(--table-border);
+ }
+
+
+@media screen and (max-width: 499px)  {
+
+
+	table {
+		width:100%;
+		margin: 50px 0 20px;
+	  	text-align: left;
+	  	border-collapse: collapse;
+		  
+		  tbody {
+			  display: flex;
+			  flex-wrap: wrap;
+			 
+			 tr { 
+			  display: flex;
+				flex-wrap: wrap;
+				flex:0 0 100%;
+				
+				
+				
+				&:nth-of-type(even) > * {
+					background: yellow;
+				}
+			
+				td {
+								width:100%;
+								padding:10px;
+							}  
+			}
+		}
+	}
+
+}
+
+// if you want o drop to one straight column take out  and adjust breakpoints From here //
+@media screen and (min-width: 500px) and (max-width: 699px)  {
+
+	table {
+		width:100%;
+		margin: 50px 0 20px;
+		  text-align: left;
+		  border-collapse: collapse;
+		  
+		  tbody {
+			  display: flex;
+			  flex-wrap: wrap;
+			 
+			 tr { 
+			  	display: flex;
+				flex-wrap: wrap;
+				flex:0 0 50%;
+				
+					&:nth-child(4n+2), &:nth-child(4n+3) {	background-color: var(--alternatingmobilecolour); }
+			
+				td {
+								
+								width:100%;
+								padding:10px;
+							}  
+			}
+		}
+	}
+}
+// To Here  //
+@media screen and (min-width: 700px)  {
+
+
+table {width:100%;}
+
+.hidden { // Hide The label
+	display:none;
+}
+
+.hideonmobile { // display items just hidden on mobile
+	display:table-row !important;
+}
+
+.hideondesktop { // hide items for desktop
+	display:none !important;
+	
+	&.hideonmobile {  // stop hideon mobile reshowing
+		display:none !important;
+	}
+}
+
+
+
+}
+
+}
